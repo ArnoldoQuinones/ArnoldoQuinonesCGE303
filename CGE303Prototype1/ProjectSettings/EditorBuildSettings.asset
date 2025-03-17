@@ -5,7 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 0
+    path: Assets/Scenes/TankPlayerFinished.unity
+    guid: 2c1e32a3e945d3a40aa1ace1a5bcda9a
+  - enabled: 1
+    path: Assets/Scenes/PlatformerFinished.unity
+    guid: 3a82c6d8a463ae2489bf18ad33bd0894
   m_configObjects: {}
