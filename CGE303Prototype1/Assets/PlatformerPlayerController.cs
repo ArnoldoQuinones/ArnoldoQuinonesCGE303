@@ -27,6 +27,8 @@ public class PlatformerPlayerController : MonoBehaviour
 //    public AudioClip scoreSound;
     private AudioSource playerAudio;
 
+    private Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +37,7 @@ public class PlatformerPlayerController : MonoBehaviour
 
         // Set the reference for the AudioSource
         playerAudio = GetComponent<AudioSource>();
+        animator = GetComponent<Animator>();
 
         //ensure the groundCheck variable is assigned
         if (groundCheck == null)
@@ -66,8 +69,17 @@ public class PlatformerPlayerController : MonoBehaviour
         //Move the player using Rigidbody2D in FixedUpdate
         rb.velocity = new Vector2(horizontalInput * moveSpeed, rb.velocity.y);
 
+        //set animator parameter xVelocityAbs to absolute value of x velocity
+        animator.SetFloat("xVelocityAbs", Mathf.Abs(rb.velocity.x));
+
+        //set animator parameter yVelocity to y velocity
+        animator.SetFloat("yVelocity", rb.velocity.y);
+
         //Check if the player is on the ground
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+
+        //set animator parameter onGround to isGrounded
+        animator.SetBool ("onGround", isGrounded);
 
 
         //Ensure the player is facing the direction of movement
